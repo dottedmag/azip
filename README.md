@@ -39,7 +39,8 @@ user=> (= (azip/up leafz) childz)
 true
 ```
 
-You can use `branch?`, `node`, `children` to interrogate the zipper state
+You can use `branch?`, `node`, `children`, `down?` to interrogate the state of
+zipper
 ```clojure
 user=> (azip/branch? childz)
 true
@@ -51,6 +52,10 @@ user=> (azip/node childz)
 {:leaf-a "a", :leaf-b "b"}
 user=> (azip/children rootz)
 (:child-a :child-b)
+user=> (azip/down? rootz :child-a)
+true
+user=> (azip/down? rootz :missing)
+false
 ```
 
 `insert` adds a new child at the current position of the zipper, replacing

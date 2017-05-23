@@ -24,6 +24,9 @@
     (is (branch? z)))
   (testing "children"
     (is (= (sort (children z)) [:middle-a :middle-b])))
+  (testing "down?"
+    (is (down? z :middle-a))
+    (is (not (down? z :missing))))
   (testing "down"
     (is (= (node (down z :middle-a)) middle-a))
     (is (= (down z :missing) nil)))
@@ -50,6 +53,9 @@
     (is (branch? az)))
   (testing "children"
     (is (= (sort (children az)) [:leaf-a :leaf-b])))
+  (testing "down?"
+    (is (down? az :leaf-a))
+    (is (not (down? az :missing))))
   (testing "down"
     (is (= (node (down az :leaf-a)) leaf-a))
     (is (= (down az :missing) nil)))

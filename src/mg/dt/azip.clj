@@ -53,6 +53,11 @@
     (call-meta ::children loc (node loc))
     (throw (Exception. "called children on leaf node"))))
 
+(defn down?
+  "Returns true if navigation to the key will succeed"
+  [[node _ :as loc] key]
+  (some? (call-meta ::get-child loc node key)))
+
 (defn down
   "Returns the loc of the child for the key at this loc, or nil if no
   children or this child does not exist"
