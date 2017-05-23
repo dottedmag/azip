@@ -69,19 +69,19 @@ user=> (-> rootz (azip/insert :child-a :newval)
 user=> (-> childz (azip/replace :rep)
                   (azip/up)
                   (azip/node))
-{:child-a :rep :child-b {}}
+{:child-a :rep, :child-b {}}
 user=> (-> leafz (azip/edit (fn [node arg] arg) :rep)
                  (azip/up)
                  (azip/up)
                  (azip/node))
-{:child-a {:leaf-a :rep :leaf-b "b"} :child-b {}}
+{:child-a {:leaf-a :rep, :leaf-b "b"}, :child-b {}}
 ```
 
 `root` is a shortcut to move the zipper to the top and return the whole data
 structure
 ```clojure
 user=> (-> leafz (azip/replace :rep) (azip/root))
-{:child-a {:leaf-a :rep :leaf-b "b"} :child-b {}}
+{:child-a {:leaf-a :rep, :leaf-b "b"} :child-b {}}
 ```
 
 ## License

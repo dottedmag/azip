@@ -65,7 +65,7 @@
            {:middle-a {:leaf-a :newval :leaf-b leaf-b} :middle-b middle-b})))
   (testing "replace"
     (is (= (root (replace az {})) {:middle-a {} :middle-b {}})))
-  (testing "Remove"
+  (testing "remove"
     (is (= (root (remove az)) {:middle-b {}}))))
 
 (deftest test-leaf-node
