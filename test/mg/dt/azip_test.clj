@@ -31,6 +31,11 @@
     (is (= (up z) nil)))
   (testing "root"
     (is (= (root z) top)))
+  (testing "insert"
+    (is (= (root (insert z :new :newval))
+           {:middle-a middle-a :middle-b middle-b :new :newval}))
+    (is (= (root (insert z :middle-a :newval))
+           {:middle-a :newval :middle-b middle-b})))
   (testing "replace"
     (is (= (root (replace z {})) {})))
   (testing "remove"
@@ -52,6 +57,12 @@
     (is (= (node (up az)) top)))
   (testing "root"
     (is (= (root az) top)))
+  (testing "insert"
+    (is (= (root (insert az :new :newval))
+           {:middle-a {:leaf-a leaf-a :leaf-b leaf-b :new :newval}
+            :middle-b middle-b}))
+    (is (= (root (insert az :leaf-a :newval))
+           {:middle-a {:leaf-a :newval :leaf-b leaf-b} :middle-b middle-b})))
   (testing "replace"
     (is (= (root (replace az {})) {:middle-a {} :middle-b {}})))
   (testing "Remove"

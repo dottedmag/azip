@@ -53,6 +53,17 @@ user=> (azip/children rootz)
 (:child-a :child-b)
 ```
 
+`insert` adds a new child at the current position of the zipper, replacing
+existing child if it exists
+```clojure
+user=> (-> rootz (azip/insert :newkey :newval)
+                 (azip/node))
+{:child-a {:leaf-a "a", :leaf-b "b"}, :child-b {}, :newkey :newval}
+user=> (-> rootz (azip/insert :child-a :newval)
+                (azip/node))
+{:child-a :newval, :child-b {}}
+```
+
 `replace` and `edit` change the current node
 ```clojure
 user=> (-> childz (azip/replace :rep)

@@ -83,6 +83,12 @@
     (node loc)
     (recur (up loc))))
 
+(defn insert
+  "Inserts a child at this loc, replacing existing one if it exists"
+  [[node path :as loc] key val]
+  (with-meta [(call-meta ::set-child loc node key val) path]
+    (meta loc)))
+
 (defn replace
   "Replaces the node at this loc without moving"
   [[_ path :as loc] node]
