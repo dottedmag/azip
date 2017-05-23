@@ -1,4 +1,4 @@
-(defproject mg.dt/azip "0.2.0-SNAPSHOT"
+(defproject mg.dt/azip "0.2.0"
   :description "Zippers for labeled unordered trees, such as nested maps"
   :url "https://github.com/dottedmag/azip"
   :license {:name "The MIT License"
